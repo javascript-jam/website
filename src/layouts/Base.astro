@@ -1,0 +1,37 @@
+---
+import BaseHead from "@/components/BaseHead"
+import NavBar from "@/components/NavBar"
+import Footer from "@/components/Footer"
+import type { SiteConfig } from "@/data"
+import { siteConfig } from "@/data"
+
+type Props = {
+  meta: SiteConfig
+}
+
+const {
+	meta: {
+    canonicalURL, title, description, ogImage, datePublished
+  },
+} = Astro.props
+---
+
+<html lang={siteConfig.lang}>
+	<head>
+		<BaseHead
+      canonicalURL={canonicalURL}
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      datePublished={datePublished}
+    />
+	</head>
+
+	<body class="home-template">
+    <NavBar />
+	  <main>
+	  	<slot />
+	  </main>
+    <Footer />
+  </body>
+</html>

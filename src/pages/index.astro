@@ -1,0 +1,40 @@
+---
+// src/pages/index.astro
+
+import Subscribe from "@/components/Subscribe"
+import HomeTopics from "@/components/HomeTopics"
+import PageLayout from "@/layouts/Base"
+---
+
+<PageLayout meta={{
+	title: "Home",
+	canonicalURL: "https://javascriptjam.com/"
+}}>
+	<div class="container">
+		<div class="home__hero mt3 mb2">
+			<div class="home__intro mt2">
+				<div class="fs20">
+					<h1>JavaScript Jam</h1>
+					<h3>The podcast and community for frontend and full-stack developers.</h3>
+					<p>Join a thriving community of developers creating their stack from digital building blocks.</p>
+					<p>Subscribe now to receive full access to Composability Summit 2022.</p>
+				</div>
+				<Subscribe />
+			</div>
+			<div class="home__video">
+				YouTube Embed
+			</div>
+		</div>
+    <HomeTopics />
+		  <div class="home__latest mt4">
+				<h2 class="fs32 mb1">Latest Articles</h2>
+				<hr class="line mb1">
+				<div class="article-link">
+					<div></div>
+					<a href="">Title</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+</PageLayout>
