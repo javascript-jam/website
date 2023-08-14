@@ -1,7 +1,6 @@
 # website
-The JavaScript Jam website built with Astro and deployed on Edgio
 
-# javascriptjam.com
+The JavaScript Jam website built with Astro and deployed on Edgio
 
 The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website built with Astro and deployed on Edgio 🚀
 

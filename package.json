@@ -1,35 +1,44 @@
 {
-	"name": "javascriptjam.com",
-	"description": "",
-	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
-		"sync": "astro sync",
-		"check": "astro check",
-		"build": "astro build",
-		"preview": "astro preview"
-	},
-	"keywords": [
-		"JavaScript Jam",
-		"Edgio"
-	],
-	"author": "Anthony Campolo",
-	"license": "MIT",
-	"type": "module",
-	"dependencies": {
-		"@astrojs/prefetch": "^0.3.0",
-		"@astrojs/rss": "^2.4.3",
-		"astro": "^2.8.1",
-		"satori": "^0.10.1",
-		"satori-html": "^0.3.2",
-		"sharp": "^0.32.2"
-	},
-	"devDependencies": {
-		"@astrojs/sitemap": "^1.3.3",
-		"@pagefind/default-ui": "^0.12.0",
-		"@resvg/resvg-js": "^2.4.1",
-		"pagefind": "^0.12.0",
-		"remark-unwrap-images": "^3.0.1",
-		"typescript": "^5.1.6"
-	}
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "sync": "astro sync",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "name": "javascriptjam.com",
+  "description": "",
+  "keywords": [
+    "JavaScript Jam",
+    "Edgio"
+  ],
+  "author": "Anthony Campolo",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@astrojs/prefetch": "^0.3.0",
+    "@astrojs/rss": "^2.4.3",
+    "astro": "^2.8.1",
+    "satori": "^0.10.1",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.32.2"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^1.3.3",
+    "@edgio/astro": "^7.1.1",
+    "@edgio/cli": "^7.1.1",
+    "@edgio/core": "^7.1.1",
+    "@edgio/devtools": "^7.1.1",
+    "@edgio/prefetch": "^7.1.1",
+    "@pagefind/default-ui": "^0.12.0",
+    "@resvg/resvg-js": "^2.4.1",
+    "chalk": "^5.3.0",
+    "pagefind": "^0.12.0",
+    "remark-unwrap-images": "^3.0.1",
+    "typescript": "^5.1.6"
+  }
 }
