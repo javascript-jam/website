@@ -207,17 +207,10 @@ const {
 
 </details>
 
-<details>
-  <summary>Click to see <code></code> code:</summary>
-  
-</details>
-
 ### Base Head Component
 
 <details>
   <summary>Click to see <code>src/components/BaseHead.astro</code> code:</summary>
-  
-</details>
 
 ```astro
 ---
@@ -278,3 +271,5 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 
 <link rel="alternate" type="application/rss+xml" title={siteConfig.title} href="/rss.xml" />
 ```
+
+</details>
