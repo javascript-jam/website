@@ -1,16 +1,24 @@
+export type SiteMeta = {
+  canonicalURL: string
+  title: string
+  description?: string
+  ogImage?: string | undefined
+  datePublished: string | undefined
+}
+
 export interface SiteConfig {
-	canonicalURL: string
-	title: string
-	description?: string
-	author?: string
-	lang?: string
-	ogLocale?: string
-	ogImage?: string
-	datePublished?: string | undefined
-	date?: {
-		locale: string | string[] | undefined
-		options: Intl.DateTimeFormatOptions
-	}
+  canonicalURL: string
+  title: string
+  description?: string
+  author?: string
+  lang?: string
+  ogLocale?: string
+  ogImage?: string
+  datePublished?: string | undefined
+  date?: {
+    locale: string | string[] | undefined
+    options: Intl.DateTimeFormatOptions
+  }
 }
 
 export const siteConfig: SiteConfig = {

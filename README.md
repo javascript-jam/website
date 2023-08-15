@@ -59,30 +59,30 @@ import prefetch from "@astrojs/prefetch"
 import remarkUnwrapImages from "remark-unwrap-images"
 
 export default defineConfig({
-	site: "https://javascriptjam.com/",
-	markdown: {
-		remarkPlugins: [remarkUnwrapImages],
-		shikiConfig: {
-			theme: "dracula",
+  site: "https://javascriptjam.com/",
+  markdown: {
+    remarkPlugins: [remarkUnwrapImages],
+    shikiConfig: {
+      theme: "dracula",
       wrap: true,
-		},
-	},
-	experimental: {
-		assets: true,
-	},
-	image: {
-		service: sharpImageService(),
-	},
-	integrations: [
-		sitemap(),
-		prefetch(),
-	],
-	compressHTML: true,
-	vite: {
-		optimizeDeps: {
-			exclude: ["@resvg/resvg-js"],
-		},
-	},
+    },
+  },
+  experimental: {
+    assets: true,
+  },
+  image: {
+    service: sharpImageService(),
+  },
+  integrations: [
+    sitemap(),
+    prefetch(),
+  ],
+  compressHTML: true,
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 })
 ```
 
@@ -94,20 +94,29 @@ export default defineConfig({
   <summary>Click to see <code>src/data/siteMeta.ts</code> code:</summary>
 
 ```ts
-// src/data/siteMeta.ts
+// src/data/index.ts
 
-interface SiteConfig {
-	author: string
-	canonicalURL: string
-	title: string
-	description: string
-	lang: string
-	ogLocale: string
-	ogImage: string
-	date: {
-		locale: string | string[] | undefined
-		options: Intl.DateTimeFormatOptions
-	}
+export type SiteMeta = {
+  canonicalURL: string
+  title: string
+  description?: string
+  ogImage?: string | undefined
+  datePublished: string | undefined
+}
+
+export interface SiteConfig {
+  canonicalURL: string
+  title: string
+  description?: string
+  author?: string
+  lang?: string
+  ogLocale?: string
+  ogImage?: string
+  datePublished?: string | undefined
+  date?: {
+    locale: string | string[] | undefined
+    options: Intl.DateTimeFormatOptions
+  }
 }
 
 export const siteConfig: SiteConfig = {
@@ -128,26 +137,6 @@ export const siteConfig: SiteConfig = {
 	},
 }
 ```
-</details>
-
-### Site Meta
-
-<details>
-  <summary>Click to see <code>src/data/siteMeta.ts</code> code:</summary>
-
-```ts
-// src/data/siteMeta.ts
-
-type SiteMeta = {
-	canonicalURL: string
-	title: string
-	description?: string
-	ogImage?: string | undefined
-	datePublished: string | undefined
-}
-
-export type { SiteMeta }
-```
 
 </details>
 
@@ -162,46 +151,41 @@ export type { SiteMeta }
 ---
 // src/layouts/Base.astro
 
-import type { SiteMeta } from "@/data/siteMeta"
 import BaseHead from "@/components/BaseHead"
 import NavBar from "@/components/NavBar"
 import Footer from "@/components/Footer"
-import Subscribe from "@/components/Subscribe"
-import { siteConfig } from "@/data/siteMeta"
+import type { SiteConfig } from "@/data"
+import { siteConfig } from "@/data"
 
-interface Props {
-	meta: SiteMeta
+type Props = {
+  meta: SiteConfig
 }
 
 const {
-	meta: {
-    canonicalURL,
-    title,
-    description = siteConfig.description,
-    ogImage,
-    datePublished
+  meta: {
+    canonicalURL, title, description, ogImage, datePublished
   },
 } = Astro.props
 ---
 
 <html lang={siteConfig.lang}>
-	<head>
-		<BaseHead
+  <head>
+    <BaseHead
       canonicalURL={canonicalURL}
       title={title}
       description={description}
       ogImage={ogImage}
       datePublished={datePublished}
     />
-	</head>
-	<body>
+  </head>
+
+  <body class="home-template">
     <NavBar />
-		<main>
-			<slot />
-		</main>
-    <Subscribe />
+    <main>
+      <slot />
+    </main>
     <Footer />
-	</body>
+  </body>
 </html>
 ```
 
@@ -216,13 +200,13 @@ const {
 ---
 // src/components/BaseHead.astro
 
-import type { SiteMeta } from "@/data/siteMeta"
-import { siteConfig } from "@/data/siteMeta"
+import type { SiteConfig } from "@/data"
+import { siteConfig } from "@/data"
 
-type Props = SiteMeta
+type Props = SiteConfig
 
 const {
-	canonicalURL, title, description, ogImage, datePublished
+  canonicalURL, title, description, ogImage, datePublished
 } = Astro.props
 
 const titleSeparator = "•"
@@ -233,6 +217,23 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PTJ6FXEPPC"></script>
+<link href="https://www.javascriptjam.com/webmentions/receive/" rel="webmention">
+<script defer src="/public/cards.min.js?v=ddffdea251"></script>
+<link rel="stylesheet" type="text/css" href="/public/cards.min.css">
+<link rel="icon" href="https://www.javascriptjam.com/content/images/size/w256h256/2022/12/606218911befc219510548a5_Group-prdgoddib2bq9zz774x1gaf1ueywnogxq9fm05jabk-1.png" type="image/png">
+<link rel="stylesheet" href="https://www.javascriptjam.com/assets/css/styles.css?v=ddffdea251">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.css" />
+<script src="https://www.javascriptjam.com/assets/js/lite-yt-embed.js?v=ddffdea251"></script>
+<link rel="stylesheet" href="https://www.javascriptjam.com/assets/css/lite-yt-embed.css?v=ddffdea251" />
+<style>
+  :root {
+    --color-light-bg: #F8FAFC;
+    --home-slant-height: 50rem;
+  }
+</style>
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -255,12 +256,12 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 {
-	datePublished && (
-		<>
-			<meta property="article:author" content={siteConfig.author} />
-			<meta property="article:published_time" content={datePublished} />
-		</>
-	)
+  datePublished && (
+    <>
+      <meta property="article:author" content={siteConfig.author} />
+      <meta property="article:published_time" content={datePublished} />
+    </>
+  )
 }
 
 <meta property="twitter:card" content="summary_large_image" />

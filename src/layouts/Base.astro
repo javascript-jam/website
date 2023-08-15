@@ -10,28 +10,28 @@ type Props = {
 }
 
 const {
-	meta: {
+  meta: {
     canonicalURL, title, description, ogImage, datePublished
   },
 } = Astro.props
 ---
 
 <html lang={siteConfig.lang}>
-	<head>
-		<BaseHead
+  <head>
+    <BaseHead
       canonicalURL={canonicalURL}
       title={title}
       description={description}
       ogImage={ogImage}
       datePublished={datePublished}
     />
-	</head>
+  </head>
 
-	<body class="home-template">
+  <body class="home-template">
     <NavBar />
-	  <main>
-	  	<slot />
-	  </main>
+    <main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
