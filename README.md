@@ -7,6 +7,8 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
 ## Outline
 
 - [Sitemap](#sitemap)
+  - [Local Development](#local-development)
+  - [Deploy](#deploy)
 - [Configuration](#configuration)
   - [Astro Configuration](#astro-configuration)
   - [Site Configuration](#site-configuration)
@@ -41,6 +43,32 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
         ├── index.astro
         ├── newsletter.astro
         └── videos.astro
+```
+
+### Local Development
+
+```bash
+pnpm i
+pnpm dev
+```
+
+```bash
+npm i
+npm run dev
+```
+
+```bash
+yarn
+yarn dev
+```
+
+Open [localhost:3000](http://localhost:3000).
+
+### Deploy
+
+```bash
+pnpm edgio run
+pnpm edgio deploy
 ```
 
 ## Configuration
@@ -145,11 +173,11 @@ export const siteConfig: SiteConfig = {
 ### Base Layout
 
 <details>
-  <summary>Click to see <code>src/layouts/Base.astro</code> code:</summary>
+  <summary>Click to see <code>src/layouts/BasePage.astro</code> code:</summary>
 
 ```astro
 ---
-// src/layouts/Base.astro
+// src/layouts/BasePage.astro
 
 import BaseHead from "@/components/BaseHead"
 import NavBar from "@/components/NavBar"

@@ -35,7 +35,7 @@ export const siteConfig: SiteConfig = {
 	description: "The podcast, newsletter, and community for frontend and full-stack developers. Presented by Edgio.",
 	// description: "JavaScript Jam is a podcast, newsletter, and weekly Twitter Space for frontend and fullstack JavaScript developers. Presented by Edgio.",
 
-	// HTML lang property, found in src/layouts/Base.astro L:18
+	// HTML lang property, found in src/layouts/BasePage.astro L:18
 	lang: "en-US",
 
 	// Meta property, found in src/components/BaseHead.astro L:42
