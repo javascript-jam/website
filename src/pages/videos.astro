@@ -1,17 +1,49 @@
 ---
 import PageLayout from "@/layouts/Base"
-import Subscribe from "@/components/Subscribe"
 ---
 
 <PageLayout meta={{
 	title: "Videos",
 	canonicalURL: "https://javascriptjam.com/videos"
 }}>
-	<section>
-		<h1>Videos</h1>
-    <h3>The show for frontend and full-stack developers</h3>
-    <Subscribe />
-    <h3>Watch past videos</h3>
-		<p>Component hitting YouTube API to fetch episodes from YouTube account:</p>
-	</section>
+  <div class="post-header">
+	  <div class="container main-content">
+			<div class="home__hero mb2">
+				<div class="home__intro mt2">
+		      <h1 class="lhtitle font-heading mb1 mt2 fs36">Videos</h1>
+          <div class="fs20">
+						<h5 id="the-podcast-community-for-frontend-and-full-stack-developers">The podcast &amp; community for frontend and full-stack developers.</h5>
+						<p>A weekly summary of the best and most important articles, podcasts, and videos about JavaScript, web development, and performance.</p>
+					</div>
+          <div class="mt2 mb3">
+						<form data-members-form="subscribe" style="max-width: 480px">
+							<div class="form-body">
+								<div class="form-flex">
+									<input data-members-email="" type="email" required="true" placeholder="Email address">
+									<button type="submit">
+										<span class="button-content">Subscribe</span>
+										<span class="button-loader">Submitting...</span>
+									</button>
+								</div>
+								<p data-members-error="" style="color: red" class="mt0"></p>
+							</div>
+							<div class="success-message">
+								<p class="mt0 mb0"><b>Thank you for subscribing!</b><br>Please check your inbox for a link to confirm your email address.</p>
+							</div>
+						</form>
+					</div>
+					<div class="home__video" style="padding-top:0">
+						<img src="https://www.javascriptjam.com/content/images/size/w600/2022/12/IphoneTiltProperly-1.png" alt="Videos">
+					</div>
+					<div class="container centered container--narrow">
+						<div class="post-content centered mt4">
+							<div class="mt4">
+								<h2 class="normal mt4 mb1">Watch past videos</h2>
+							</div>
+						</div>
+					</div>
+  	    </div>
+      </div>
+    </div>
+  </div>
 </PageLayout>

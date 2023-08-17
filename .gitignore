@@ -10,3 +10,4 @@ yarn.lock
 # Edgio generated build directory
 .edgio
 yarn-error.log
+examples

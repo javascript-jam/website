@@ -1,18 +1,47 @@
 ---
 import PageLayout from "@/layouts/Base"
-import Subscribe from "@/components/Subscribe"
 ---
 
 <PageLayout meta={{
   title: "Composability Summit",
   canonicalURL: "https://javascriptjam.com/composability"
 }}>
-	<section>
-		<h1>Composability Summit</h1>
-    <h3>If you Build & Deploy, you'll love Composability</h3>
-    <p>Check out talks from over 25 speakers who participated in Composability Summit 2022.</p>
-    <Subscribe />
-    <h3>All posts by date</h3>
-    <p>Component with Composability Summit episodes.</p>
-	</section>
+  <main class="main-content post">
+    <div class="post-header tc">
+      <div class="container">
+        <img src="https://www.javascriptjam.com/content/images/size/w600/2022/12/composability.dev-1.png" alt="Composability Summit 2022" class="post-image">
+        <h1 class="lhtitle font-heading mb1 mt0 fs36">
+          Composability Summit 2022
+        </h1>
+        <h2 class="fs24 normal mb2">
+          If you Build &amp; Deploy, you'll love Composability. Check out talks from over 25 speakers who participated in Composability Summit 2022.
+        </h2>
+        <hr class="line line--center">
+      </div>
+    </div>
+    <div class="container post-content centered mt4">
+      <h2 id="what-is-composability">What is Composability?</h2>
+      <figure class="kg-card kg-embed-card">
+        <div class="fluid-width-video-wrapper" style="padding-top: 56.5%;">
+          <iframe src="https://www.youtube.com/embed/Cr9vN6il4pM?list=PLtx4Rzg8x6W3qrdeaORkDuCxRz97o2lHr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" name="fitvid0"></iframe>
+        </div>
+      </figure>
+      <p>Composability refers to the ability of software components or systems to be combined and reused in different contexts or to work together as a unified whole. It is a fundamental principle of software engineering and is particularly important in the development of modular and reusable software systems.</p>
+      
+      <p>In practice, composability enables developers to build complex systems by combining smaller, independent components that each perform a specific task. These components can be easily reused in different contexts, which can greatly improve the efficiency of the development process and reduce the overall complexity of the system.</p>
+      
+      <p>For example, a developer working on a web application might use a variety of pre-existing libraries and frameworks to handle tasks such as routing, data persistence, and authentication. By using these components in a composable manner, the developer can focus on the specific features and functionality of their application, rather than having to build everything from scratch.</p>
+      
+      <p>Overall, composability is an important concept in software development because it allows developers to build more complex systems in a more efficient and scalable way. It also promotes code reuse and modularity, which can help improve the maintainability and extensibility of a software system over time.</p>
+      
+      <h2 id="watch-the-whole-summit">Watch the Whole Summit</h2>
+      
+      <p>Check out the <a href="https://www.javascriptjam.com/tag/composability-summit/">list of Composability Summit talks here</a> or watch our Composability playlist below featuring every talk so you can enjoy the entire summit:</p>
+      <figure class="kg-card kg-embed-card">
+        <div class="fluid-width-video-wrapper" style="padding-top: 56.5%;">
+          <iframe src="https://www.youtube.com/embed/0Gb7g99FoHk?list=PLtx4Rzg8x6W3qrdeaORkDuCxRz97o2lHr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" name="fitvid1"></iframe>
+        </div>
+      </figure>
+    </div>
+  </main>
 </PageLayout>

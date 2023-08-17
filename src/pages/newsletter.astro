@@ -1,18 +1,54 @@
 ---
 import PageLayout from "@/layouts/Base"
-import Subscribe from "@/components/Subscribe"
+// import Subscribe from "@/components/Subscribe"
 ---
 
 <PageLayout meta={{
   title: "Newsletter",
   canonicalURL: "https://javascriptjam.com/newsletter"
 }}>
-	<section>
-		<h1>Newsletter Archive</h1>
-    <h3>The podcast & community for frontend and full-stack developers</h3>
-    <p>A weekly summary of the best and most important articles, podcasts, and videos about JavaScript, web development, and performance.</p>
-    <Subscribe />
-    <h3>Read past issues</h3>
-    <p>Component with Newsletter articles:</p>
-	</section>
+  <div class="post-header">
+    <div class="container main-content">
+      <div class="home__hero mb2">
+        <div class="home__intro mt2">
+          <h1 class="lhtitle font-heading mb1 mt2 fs36">Newsletter</h1>
+          <div class="fs20">
+            <h5 id="the-podcast-community-for-frontend-and-full-stack-developers">
+              The podcast &amp; community for frontend and full-stack developers.
+            </h5>
+            <p>A weekly summary of the best and most important articles, podcasts, and videos about JavaScript, web development, and performance.</p>
+          </div>
+          <!-- <Subscribe /> -->
+          <div class="mt2 mb3">
+            <form data-members-form="subscribe" style="max-width: 480px">
+              <div class="form-body">
+                <div class="form-flex">
+                  <input data-members-email="" type="email" required="true" placeholder="Email address">
+                  <button type="submit">
+                    <span class="button-content">Subscribe</span>
+                    <span class="button-loader">Submitting...</span>
+                  </button>
+                </div>
+                <p data-members-error="" style="color: red" class="mt0"></p>
+              </div>
+              <div class="success-message">
+                <p class="mt0 mb0"><b>Thank you for subscribing!</b><br>Please check your inbox for a link to confirm your email address.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="home__video" style="padding-top:0">
+          <img src="https://www.javascriptjam.com/content/images/size/w600/2022/12/IphoneTiltProperly-1.png" alt="Newsletter">
+        </div>
+      </div>
+    </div>
+    <div class="container centered container--narrow">
+      <div class="post-content centered mt4">
+        <div class="mt4"> 
+          <h2 class="normal mt4 mb1">Read past issues</h2>
+          <!-- <Newsletters /> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </PageLayout>
