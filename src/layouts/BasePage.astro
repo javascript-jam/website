@@ -2,21 +2,13 @@
 import BaseHead from "@/components/BaseHead"
 import NavBar from "@/components/NavBar"
 import Footer from "@/components/Footer"
-import type { SiteConfig } from "@/data"
-import { siteConfig } from "@/data"
-
-type Props = {
-  meta: SiteConfig
-}
 
 const {
-  meta: {
-    canonicalURL, title, description, ogImage, datePublished
-  },
+  canonicalURL, title, description, ogImage, datePublished
 } = Astro.props
 ---
 
-<html lang={siteConfig.lang}>
+<html lang="en-US">
   <head>
     <BaseHead
       canonicalURL={canonicalURL}

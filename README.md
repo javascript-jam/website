@@ -30,19 +30,23 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
     ├── components
     │   ├── BaseHead.astro
     │   ├── Footer.astro
+    │   ├── Topics.astro
     │   ├── NavBar.astro
     │   └── Subscribe.astro
     ├── data
-    │   └── siteMeta.ts
+    │   └── index.ts
     ├── env.d.ts
     ├── layouts
-    │   └── Base.astro
-    └── pages
-        ├── about.astro
-        ├── composability.astro
-        ├── index.astro
-        ├── newsletter.astro
-        └── videos.astro
+    │   └── BasePage.astro
+    ├── pages
+    │   ├── about.astro
+    │   ├── composability.astro
+    │   ├── index.astro
+    │   ├── newsletter.astro
+    │   ├── testimonials.astro
+    │   └── videos.astro
+    └── styles
+        └── global.css
 ```
 
 ### Local Development
@@ -79,7 +83,7 @@ pnpm edgio deploy
   <summary>Click to see <code>astro.config.ts</code> code:</summary>
 
 ```ts
-// astro.config.ts
+// astro.config.mjs
 
 import { defineConfig, sharpImageService } from "astro/config"
 import sitemap from "@astrojs/sitemap"
@@ -124,45 +128,46 @@ export default defineConfig({
 ```ts
 // src/data/index.ts
 
-export type SiteMeta = {
-  canonicalURL: string
-  title: string
-  description?: string
-  ogImage?: string | undefined
-  datePublished: string | undefined
-}
-
-export interface SiteConfig {
+interface SiteConfig {
   canonicalURL: string
   title: string
   description?: string
   author?: string
   lang?: string
   ogLocale?: string
-  ogImage?: string
+  ogImage?: string | undefined
   datePublished?: string | undefined
-  date?: {
-    locale: string | string[] | undefined
-    options: Intl.DateTimeFormatOptions
-  }
+  // date?: {
+  //   locale: string | string[] | undefined
+  //   options: Intl.DateTimeFormatOptions
+  // }
 }
 
+const JSJAM_AUTHOR = "https://raw.githubusercontent.com/ajcwebdev/ajcwebdev/main/assets/Headshot-crop.jpg"
+const JSJAM_CANONICAL_URL = "https://javascriptjam.com"
+const JSJAM_TITLE = "JavaScript Jam by Edgio"
+const JSJAM_DESCRIPTION = "JavaScript Jam is a podcast, newsletter, and weekly Twitter Space for frontend and fullstack JavaScript developers. Presented by Edgio."
+const JSJAM_LANG = "en-US"
+const JSJAM_OG_LOCALE = "en_US"
+const JSJAM_OG_IMAGE = "https://www.javascriptjam.com/content/images/2023/05/1200-630-jsjam-by-edgio-banner-facebook.png"
+// const JSJAM_DATE = {
+// 	locale: "en-US",
+// 	options: {
+// 		day: "numeric",
+// 		month: "numeric",
+// 		year: "numeric",
+// 	},
+// }
+
 export const siteConfig: SiteConfig = {
-	author: "https://raw.githubusercontent.com/ajcwebdev/ajcwebdev/main/assets/Headshot-crop.jpg",
-	canonicalURL: "https://javascriptjam.com",
-	title: "JavaScript Jam by Edgio",
-	description: "The podcast, newsletter, and community for frontend and full-stack developers. Presented by Edgio.",
-	lang: "en-US",
-	ogLocale: "en_US",
-	ogImage: "https://www.javascriptjam.com/content/images/2023/05/1200-630-jsjam-by-edgio-banner-facebook.png",
-	date: {
-		locale: "en-US",
-		options: {
-			day: "numeric",
-			month: "short",
-			year: "numeric",
-		},
-	},
+  author: JSJAM_AUTHOR,               // Use for meta property (components/BaseHead.astro L:31 + L:49) and generated satori png (pages/og-image/[slug].png.ts)
+  canonicalURL: JSJAM_CANONICAL_URL,  // Meta property for constructing meta title property in components/BaseHead.astro L:11
+  title: JSJAM_TITLE,                 // Meta property used as a default canonical URL meta property
+  description: JSJAM_DESCRIPTION,     // Meta property used as a default description meta property
+  lang: JSJAM_LANG,                   // HTML lang property in layouts/BasePage.astro L:18
+  ogLocale: JSJAM_OG_LOCALE,          // Meta property in components/BaseHead.astro L:42
+  ogImage: JSJAM_OG_IMAGE,            // Date.prototype.toLocaleDateString() parameters, found in utils/date.ts.
+  // date: JSJAM_DATE,
 }
 ```
 
@@ -228,17 +233,13 @@ const {
 ---
 // src/components/BaseHead.astro
 
-import type { SiteConfig } from "@/data"
 import { siteConfig } from "@/data"
-
-type Props = SiteConfig
 
 const {
   canonicalURL, title, description, ogImage, datePublished
 } = Astro.props
 
-const titleSeparator = "•"
-const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
+const siteTitle = `${title} "•" ${siteConfig.title}`
 const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url).href
 ---
 
@@ -246,15 +247,14 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<!-- Google tag (gtag.js) -->
+<!-- Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTJ6FXEPPC"></script>
 <link href="https://www.javascriptjam.com/webmentions/receive/" rel="webmention">
-<script defer src="/public/cards.min.js?v=ddffdea251"></script>
-<link rel="stylesheet" type="text/css" href="/public/cards.min.css">
-<link rel="icon" href="https://www.javascriptjam.com/content/images/size/w256h256/2022/12/606218911befc219510548a5_Group-prdgoddib2bq9zz774x1gaf1ueywnogxq9fm05jabk-1.png" type="image/png">
+
+<!-- Styling -->
+<link rel="stylesheet" type="text/css" href="/styles/global.css">
 <link rel="stylesheet" href="https://www.javascriptjam.com/assets/css/styles.css?v=ddffdea251">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.css" />
-<script src="https://www.javascriptjam.com/assets/js/lite-yt-embed.js?v=ddffdea251"></script>
 <link rel="stylesheet" href="https://www.javascriptjam.com/assets/css/lite-yt-embed.css?v=ddffdea251" />
 <style>
   :root {
@@ -263,6 +263,7 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
   }
 </style>
 
+<link rel="icon" href="https://www.javascriptjam.com/content/images/size/w256h256/2022/12/606218911befc219510548a5_Group-prdgoddib2bq9zz774x1gaf1ueywnogxq9fm05jabk-1.png" type="image/png">
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/icon.svg" type="image/svg+xml" />
 <link rel="manifest" href="/manifest.webmanifest" />
