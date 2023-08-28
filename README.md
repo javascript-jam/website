@@ -16,6 +16,8 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
 - [Layout](#layout)
   - [Base Layout](#base-layout)
   - [Base Head Component](#base-head-component)
+- [Resources](#resources)
+  - [Other Astro Examples](#other-astro-examples)
 
 ## Sitemap
 
@@ -303,3 +305,11 @@ const socialImageURL = new URL(ogImage ? ogImage : "/social-card.png", Astro.url
 ```
 
 </details>
+
+## Resources
+
+### Other Astro Examples
+
+- [Astro Paper](https://github.com/satnaing/astro-paper)
+- [Astro Theme Cactus](https://github.com/chrismwilliams/astro-theme-cactus)
+- [Astro Sendit](https://github.com/CloudCannon/sendit-astro-template)
