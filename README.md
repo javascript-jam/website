@@ -6,10 +6,10 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
 
 ## Outline
 
-- [Sitemap](#sitemap)
+- [Setup](#setup)
   - [Local Development](#local-development)
-  - [Deploy](#deploy)
 - [Configuration](#configuration)
+  - [Sitemap](#sitemap)
   - [Astro Configuration](#astro-configuration)
   - [Site Configuration](#site-configuration)
   - [Site Meta](#site-meta)
@@ -19,7 +19,20 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
 - [Resources](#resources)
   - [Other Astro Examples](#other-astro-examples)
 
-## Sitemap
+## Setup
+
+### Local Development
+
+```bash
+npm i
+npm run dev
+```
+
+Open [localhost:3000](http://localhost:3000).
+
+## Configuration
+
+### Sitemap
 
 ```
 .
@@ -50,17 +63,6 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
     └── styles
         └── global.css
 ```
-
-### Local Development
-
-```bash
-npm i
-npm run dev
-```
-
-Open [localhost:3000](http://localhost:3000).
-
-## Configuration
 
 ### Astro Configuration
 
