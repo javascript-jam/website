@@ -54,28 +54,11 @@ The new and improved [JavaScript Jam](https://www.javascriptjam.com/) website bu
 ### Local Development
 
 ```bash
-pnpm i
-pnpm dev
-```
-
-```bash
 npm i
 npm run dev
 ```
 
-```bash
-yarn
-yarn dev
-```
-
 Open [localhost:3000](http://localhost:3000).
-
-### Deploy
-
-```bash
-pnpm edgio run
-pnpm edgio deploy
-```
 
 ## Configuration
 
